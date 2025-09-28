@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const DeportametmSchema = z.union([
+export const DepartametmSchema = z.union([
   z.literal("android"),
   z.literal("ios"),
   z.literal("design"),
@@ -15,4 +15,4 @@ export const DeportametmSchema = z.union([
   z.literal("analytics"),
 ]);
 
-export type Deportament = z.infer<typeof DeportametmSchema>;
+export type Departament = z.infer<typeof DepartametmSchema>;

@@ -6,7 +6,7 @@ interface Props {
   className?: string;
   icon?: ReactNode;
   text?: string;
-  onClick: React.Dispatch<React.SetStateAction<string>>;
+  onClick:  (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 }
 
@@ -14,7 +14,7 @@ const Button: FC<Props> = ({ className, icon, text, disabled, onClick }) => {
   return (
     <button
       className={cn(className, styles.button)}
-      onClick={() => onClick}
+      onClick={onClick}
       disabled={disabled}
     >
       {icon ? icon : text}

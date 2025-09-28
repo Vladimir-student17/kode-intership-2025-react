@@ -2,6 +2,9 @@
   position: relative;
   display: flex;
   align-items: center;
+  &:hover .buttonSearch > svg {
+    color: $color-black-text;
+  }
 }
 
 .input {
@@ -12,12 +15,13 @@
   padding: 0 44px;
   outline: unset;
   background-color: $color-silcer-bag;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: $color-black-text;
+
   &:hover {
     cursor: text;
-  }
-
-  &:hover .buttonSearch__icon {
-    color: black;
   }
 
   &::placeholder {
@@ -26,11 +30,6 @@
     line-height: 20px;
     color: $color-placeholder;
   }
-
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 20px;
-  color: $color-black-text;
 }
 
 .buttonSearch,

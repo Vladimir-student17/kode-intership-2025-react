@@ -3,27 +3,29 @@ import Button from "../Button";
 import Icon from "../Icon";
 import cn from "classnames";
 import styles from "./styles.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "@/store/store";
+import { openModal } from "@/store/slices/modalWindowSlice";
 
 interface Props {
   className?: string;
-  onTypeSort: React.Dispatch<React.SetStateAction<"abc" | "birthday">>;
   onInputChange: React.Dispatch<React.SetStateAction<string>>;
   onClick?: () => void;
   value: string;
-  typeSort: string;
   placeholder?: string;
 }
 
 const InputField: FC<Props> = ({
   className,
   onInputChange,
-  onTypeSort,
   value,
-  typeSort,
   placeholder = "Введи имя, тег, почту...",
 }) => {
   const [lengthValue, setLengthValue] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const sortType = useSelector<RootState>((state) => state.sortType);
 
   useEffect(() => {
     setLengthValue(value.length);
@@ -35,6 +37,10 @@ const InputField: FC<Props> = ({
     } else {
       onInputChange("");
     }
+  };
+
+  const handleSortClick = () => {
+    dispatch(openModal());
   };
 
   return (
@@ -65,12 +71,12 @@ const InputField: FC<Props> = ({
 
       <Button
         className={styles.buttonSort}
-        onClick={() => onTypeSort(typeSort === "abs" ? "birthday" : "abc")}
+        onClick={handleSortClick}
         icon={
           <Icon
             iconId="icon-sort"
             className={cn(styles.buttonSort__icon, {
-              [styles.buttonSearch__icon_violet]: typeSort === "birthday",
+              [styles.buttonSort__icon_violet]: sortType === "birthday",
             })}
           />
         }

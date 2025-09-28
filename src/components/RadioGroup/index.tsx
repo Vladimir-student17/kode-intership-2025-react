@@ -1,4 +1,4 @@
-import type { Deportament } from "@/types/Deportament";
+import type { Departament } from "@/types/Departament";
 import { type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 interface Props {
   className?: string;
   name: string;
-  options: Deportament[];
+  options: Departament[];
   defaultValue: string;
   onChange: React.Dispatch<React.SetStateAction<string>>
 }

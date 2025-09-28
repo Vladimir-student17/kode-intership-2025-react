@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { DeportametmSchema } from "./DeportamentData";
+import { DepartametmSchema } from "./DepartamentData";
 
 export const UserSchema = z.object({
   id: z.string(),
@@ -7,7 +7,7 @@ export const UserSchema = z.object({
   firstName: z.string(),
   lastName: z.string().min(3).max(6),
   userTag: z.string(),
-  department: DeportametmSchema,
+  department: DepartametmSchema,
   position: z.string(),
   birthday: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid date string",

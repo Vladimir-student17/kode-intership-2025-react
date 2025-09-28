@@ -2,32 +2,32 @@ import { useState, type FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
 import InputField from "../InputField";
-import { deportamentConfif } from "@/configs/deportamentConfig";
+import { departmentConfig } from "@/configs/departamentConfig";
 import RadioGroup from "@/components/RadioGroup";
+import ModalWindowSort from "../ModalWindowSort";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/store";
 
 interface Props {
   className?: string;
 }
 
 const TopAppBar: FC<Props> = ({ className }) => {
+  const showModal = useSelector((state: RootState) => state.showModal);
+
   const [valueInput, setValueInput] = useState<string>("");
-  const [typeSort, setTypeSort] = useState<"abc" | "birthday">("abc");
-  const [deportament, setDeportament] = useState<string>("all");
+  const [departament, setDepartament] = useState<string>("all");
 
   return (
     <div className={cn(className, styles.form)}>
-      <InputField
-        onInputChange={setValueInput}
-        onTypeSort={setTypeSort}
-        typeSort={typeSort}
-        value={valueInput}
-      />
+      <InputField onInputChange={setValueInput} value={valueInput} />
       <RadioGroup
-        options={deportamentConfif}
+        options={departmentConfig}
         name="deportaments"
-        defaultValue={deportament}
-        onChange={setDeportament}
+        defaultValue={departament}
+        onChange={setDepartament}
       />
+      {showModal && <ModalWindowSort />}
     </div>
   );
 };

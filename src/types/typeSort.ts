@@ -1,0 +1,1 @@
+export type SortType = 'abc' | 'birthday';

@@ -3,4 +3,5 @@
     "icon-sort" |
     "icon-back-arrow" |
     "icon-star" |
-    "icon-phone";
+    "icon-phone"|
+    "icon-close";

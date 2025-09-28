@@ -1,12 +1,12 @@
-import type { Deportament } from "@/types/Deportament";
+import type { Departament } from "@/types/Departament";
 
-export const deportamentConfif: Deportament[] = [
+export const departmentConfig: Departament[] = [
   { value: "all", label: "Все" },
   { value: "design", label: "Дизайн" },
   { value: "analytics", label: "Аналитика" },
   { value: "management", label: "Менеджмент" },
   { value: "ios", label: "iOS" },
-  { value: "android", label: "Android" }, 
+  { value: "android", label: "Android" },
   { value: "qa", label: "QA" },
   { value: "back_office", label: "Бэк-офис" },
   { value: "frontend", label: "Frontend" },

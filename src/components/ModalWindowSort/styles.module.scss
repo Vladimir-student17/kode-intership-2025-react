@@ -1,0 +1,120 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-bg-modal;
+}
+
+.modalWindow {
+  position: relative;
+  display: flex;
+  gap: 35px;
+  flex-direction: column;
+  z-index: 1;
+  width: 341px;
+  height: 144px;
+  padding: 24px 16px;
+
+  border-radius: 20px;
+
+  background-color: $color-white;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 24px;
+    right: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $color-silcer-bag;
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.2);
+
+      & > svg {
+        color: $color-violet;
+      }
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    & > svg {
+      color: $color-placeholder;
+      transition: color 0.2s ease-in;
+    }
+  }
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.custom_inputRadio {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__input {
+    display: none;
+  }
+
+  &__checkbox {
+    display: block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid $color-violet;
+    transition: border 0.2s ease-in;
+
+    &_active {
+      border: 6px solid $color-violet;
+    }
+  }
+
+  &__label {
+    position: relative;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-black-text;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 100%;
+      position: absolute;
+      left: -34px;
+      top: 0;
+    }
+  }
+}

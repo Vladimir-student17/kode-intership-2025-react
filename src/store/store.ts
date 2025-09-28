@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit/react";
+import sortReducer from "./slices/sortSlice";
+import modalReducer from "./slices/modalWindowSlice";
 
 const store = configureStore({
-    reducer: {
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(
-
-        ),
+  reducer: {
+    sortType: sortReducer,
+    showModal: modalReducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
 export default store;

@@ -7,12 +7,13 @@ interface Props {
   color?: string;
 }
 
-const Icon: FC<Props> = ({ className = '', iconId, color }) => {
+const Icon: FC<Props> = ({ className = "", iconId, color }) => {
+  const size: number = iconId === "icon-close" ? 16 : 24;
   return (
     <svg
       style={{ color }}
-      width={24}
-      height={24}
+      width={size}
+      height={size}
       preserveAspectRatio="xMidYMid meet"
       className={className}
     >
