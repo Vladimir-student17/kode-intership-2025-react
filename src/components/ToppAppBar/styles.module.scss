@@ -1,0 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 0 -16px;
+  padding: 0 16px;
+  overflow: hidden;
+
+  border-bottom: 0.4px solid $color-placeholder;
+}

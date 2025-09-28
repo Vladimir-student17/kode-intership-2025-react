@@ -1,10 +1,9 @@
-@forward "../../scss/global/variables" ;
-
+@use "./variables";
+@use "./mixins";
 
 body {
-  font-family: $ff-Poppins;
-  color: $color-black;
-  background-color: $color-background;
+  font-family: "Inter", sans-serif;
+  color: variables.$color-black;
 }
 
 #root {
@@ -15,7 +14,6 @@ body {
 
 main {
   flex-grow: 1;
-  padding: 30px 0;
   position: relative;
 }
 
@@ -27,13 +25,13 @@ img {
 
 a {
   text-decoration: none;
-  }
+}
 
 .white-block {
   display: flex;
   justify-content: center;
   padding: 30px 0;
 
-  background-color: $color-white;
+  background-color: variables.$color-white;
   border-radius: 10px;
 }

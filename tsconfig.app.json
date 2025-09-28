@@ -45,7 +45,7 @@
         "./store/api/*"
       ],
       "@styles/*": [
-        "./styles/*"
+        "./styles/scss/global*"
       ]
     },
     /* Linting */

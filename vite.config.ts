@@ -5,6 +5,13 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@styles/variables" as *; @use "@styles/mixins" as *;`
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,7 +21,8 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
       '@types': path.resolve(__dirname, './src/types'),
       '@api': path.resolve(__dirname, './src/store/api'),
-      '@styles': path.resolve(__dirname, './src/styles'),
+      "@styles": path.resolve(__dirname, "./src/styles/scss/global"),
     }
   }
-})s
+})
+

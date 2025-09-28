@@ -1,0 +1,38 @@
+.radioGroup {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin: 0 -16px;
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  @include vp-1023 {
+    overflow-x: scroll;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: block;
+    padding: 8px 12px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-gray-text;
+    transition: color 0.3s ease-in;
+    white-space: nowrap;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-black-text;
+    }
+
+    &_isAcive {
+      color: $color-black-text;
+      border-bottom: 2px solid $color-violet;
+    }
+  }
+}
