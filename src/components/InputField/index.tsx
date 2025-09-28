@@ -6,23 +6,28 @@ import styles from "./styles.module.scss";
 
 interface Props {
   className?: string;
+  onTypeSort: React.Dispatch<React.SetStateAction<"abc" | "birthday">>;
   onInputChange: React.Dispatch<React.SetStateAction<string>>;
   onClick?: () => void;
   value: string;
+  typeSort: string;
   placeholder?: string;
 }
 
 const InputField: FC<Props> = ({
   className,
   onInputChange,
+  onTypeSort,
   value,
+  typeSort,
   placeholder = "Введи имя, тег, почту...",
 }) => {
   const [lengthValue, setLengthValue] = useState<number>(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     setLengthValue(value.length);
   }, [value]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: string) => {
     if (e) {
@@ -36,7 +41,7 @@ const InputField: FC<Props> = ({
     <div className={cn(styles.container, className)}>
       <Button
         className={styles.buttonSearch}
-        onclick={() => console.log("click")}
+        onClick={() => console.log("click")}
         icon={
           <Icon
             iconId="icon-search"
@@ -60,9 +65,14 @@ const InputField: FC<Props> = ({
 
       <Button
         className={styles.buttonSort}
-        onclick={() => console.log("click")}
+        onClick={() => onTypeSort(typeSort === "abs" ? "birthday" : "abc")}
         icon={
-          <Icon iconId="icon-sort" className={cn(styles.buttonSort__icon)} />
+          <Icon
+            iconId="icon-sort"
+            className={cn(styles.buttonSort__icon, {
+              [styles.buttonSearch__icon_violet]: typeSort === "birthday",
+            })}
+          />
         }
         aria-label="Сортировка"
       />

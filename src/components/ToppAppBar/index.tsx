@@ -11,11 +11,17 @@ interface Props {
 
 const TopAppBar: FC<Props> = ({ className }) => {
   const [valueInput, setValueInput] = useState<string>("");
-  const [deportament, setDeportament] = useState<string>("analytics");
+  const [typeSort, setTypeSort] = useState<"abc" | "birthday">("abc");
+  const [deportament, setDeportament] = useState<string>("all");
 
   return (
     <div className={cn(className, styles.form)}>
-      <InputField onInputChange={setValueInput} value={valueInput} />
+      <InputField
+        onInputChange={setValueInput}
+        onTypeSort={setTypeSort}
+        typeSort={typeSort}
+        value={valueInput}
+      />
       <RadioGroup
         options={deportamentConfif}
         name="deportaments"
