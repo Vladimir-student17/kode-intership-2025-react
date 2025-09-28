@@ -1,8 +1,7 @@
-import type { Deportament } from "@/types/deportament";
-
+import type { Deportament } from "@/types/Deportament";
 
 export const deportamentConfif: Deportament[] = [
-  { value: "", label: "Все" },
+  { value: "all", label: "Все" },
   { value: "design", label: "Дизайн" },
   { value: "analytics", label: "Аналитика" },
   { value: "management", label: "Менеджмент" },
