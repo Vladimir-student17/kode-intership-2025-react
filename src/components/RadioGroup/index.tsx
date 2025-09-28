@@ -1,4 +1,4 @@
-import type { Deportament } from "@/types/deportament";
+import type { Deportament } from "@/types/Deportament";
 import { type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";

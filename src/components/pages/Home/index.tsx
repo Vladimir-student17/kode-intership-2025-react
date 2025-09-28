@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { type FC } from "react";
+import { Suspense, type FC } from "react";
 import styles from "./styles.module.scss";
 import TopAppBar from "@/components/ToppAppBar";
 
@@ -10,7 +10,13 @@ interface Props {
 const Home: FC<Props> = ({ className }) => {
   return (
     <div className={cn(className, styles.home)}>
-        <TopAppBar />
+      <TopAppBar />
+      <Suspense fallback={<span>Loading list...</span>}>
+        <ul>
+          <li>List 0ne</li>
+          <li>List Two</li>
+        </ul>
+      </Suspense>
     </div>
   );
 };

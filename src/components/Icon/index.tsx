@@ -7,7 +7,7 @@ interface Props {
   color?: string;
 }
 
-const Icon: FC<Props> = ({ className = '', iconId, color = "currentColor" }) => {
+const Icon: FC<Props> = ({ className = '', iconId, color }) => {
   return (
     <svg
       style={{ color }}

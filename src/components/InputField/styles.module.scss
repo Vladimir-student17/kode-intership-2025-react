@@ -2,45 +2,65 @@
   position: relative;
   display: flex;
   align-items: center;
+}
 
-  & > input {
-    border: none;
-    width: 100%;
-    border-radius: 16px;
-    height: 40px;
-    padding: 0 44px;
-    outline: unset;
+.input {
+  border: none;
+  width: 100%;
+  border-radius: 16px;
+  height: 40px;
+  padding: 0 44px;
+  outline: unset;
+  background-color: $color-silcer-bag;
+  &:hover {
+    cursor: text;
+  }
 
-    background-color: $color-silcer-bag;
+  &:hover .buttonSearch__icon {
+    color: black;
+  }
 
-    &::placeholder {
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 20px;
-      color: $color-placeholder;
-    }
-
-    font-weight: 400;
+  &::placeholder {
+    font-weight: 500;
     font-size: 15px;
     line-height: 20px;
+    color: $color-placeholder;
+  }
+
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: $color-black-text;
+}
+
+.buttonSearch,
+.buttonSort {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  &__icon {
+    color: $color-placeholder;
+    transition: all 0.2s ease-in;
+
+    &_black {
+      color: $color-black-text;
+    }
+    &_violet {
+      color: $color-violet;
+    }
+  }
+
+  &:hover > svg {
     color: $color-black-text;
   }
 }
 
 .buttonSearch {
-  position: absolute;
-  top: 50%;
   left: 12px;
-  transform: translateY(-50%);
-
-  &__icon {
-    fill: red;
-  }
 }
 
 .buttonSort {
-  position: absolute;
-  top: 50%;
   right: 12px;
-  transform: translateY(-50%);
 }

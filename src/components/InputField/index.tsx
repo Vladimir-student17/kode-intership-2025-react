@@ -1,4 +1,4 @@
-import { useRef, type FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
 import cn from "classnames";
@@ -6,10 +6,10 @@ import styles from "./styles.module.scss";
 
 interface Props {
   className?: string;
-  onInputChange: React.Dispatch<React.SetStateAction<string>>; 
+  onInputChange: React.Dispatch<React.SetStateAction<string>>;
   onClick?: () => void;
   value: string;
-  placeholder?: string; //
+  placeholder?: string;
 }
 
 const InputField: FC<Props> = ({
@@ -18,15 +18,18 @@ const InputField: FC<Props> = ({
   value,
   placeholder = "Введи имя, тег, почту...",
 }) => {
-  const inputRef = useRef(null);
+  const [lengthValue, setLengthValue] = useState<number>(0);
+  useEffect(() => {
+    setLengthValue(value.length);
+  }, [value]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: string) => {
-    if(e) {
-      onInputChange(e)
+    if (e) {
+      onInputChange(e);
     } else {
-      onInputChange('')
+      onInputChange("");
     }
-  
   };
 
   return (
@@ -35,7 +38,12 @@ const InputField: FC<Props> = ({
         className={styles.buttonSearch}
         onclick={() => console.log("click")}
         icon={
-          <Icon iconId="icon-search" className={styles.buttonSearch__icon} />
+          <Icon
+            iconId="icon-search"
+            className={cn(styles.buttonSearch__icon, {
+              [styles.buttonSearch__icon_black]: lengthValue > 0,
+            })}
+          />
         }
         aria-label="Поиск"
       />
@@ -53,7 +61,9 @@ const InputField: FC<Props> = ({
       <Button
         className={styles.buttonSort}
         onclick={() => console.log("click")}
-        icon={<Icon iconId="icon-sort" />}
+        icon={
+          <Icon iconId="icon-sort" className={cn(styles.buttonSort__icon)} />
+        }
         aria-label="Сортировка"
       />
     </div>

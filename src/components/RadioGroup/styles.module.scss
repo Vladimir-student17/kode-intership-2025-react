@@ -17,13 +17,15 @@
   &__label {
     display: block;
     padding: 8px 12px;
+
     font-weight: 500;
     font-size: 15px;
     line-height: 20px;
     text-align: center;
     color: $color-gray-text;
-    transition: color 0.3s ease-in;
+    border-bottom: 2px solid transparent;
     white-space: nowrap;
+    transition: color 0.3s ease-in, border 0.4s ease-in;
 
     &:hover {
       cursor: pointer;

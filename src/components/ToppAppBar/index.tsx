@@ -11,7 +11,7 @@ interface Props {
 
 const TopAppBar: FC<Props> = ({ className }) => {
   const [valueInput, setValueInput] = useState<string>("");
-  const [deportament, setDeportament] = useState<string>("");
+  const [deportament, setDeportament] = useState<string>("analytics");
 
   return (
     <div className={cn(className, styles.form)}>
