@@ -26,6 +26,7 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
     refetchOnReconnect: true,
   });
   useEffect(() => {
+    
     setData(data);
   }, [data]);
 

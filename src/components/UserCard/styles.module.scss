@@ -1,3 +1,61 @@
 .userCard {
   display: flex;
+  flex-direction: row;
+  gap: 16px;
+  border-radius: 8px;
+
+  &:hover {
+    & > .userCard__img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    display: block;
+    height: 72px;
+    width: 72px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: show 0.3s forwards;
+  }
+
+  &__fullName {
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-black-text;
+  }
+
+  &__tag {
+    margin: 0;
+    padding-left: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-placeholder;
+  }
+
+  &__departament {
+    margin: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: $color-dark-gray;
+  }
+}
+
+@keyframes show {
+  from {
+    filter: blur(2px);
+  }
+  to {
+    filter: blur(0);
+  }
 }

@@ -1,4 +1,9 @@
 .userList {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

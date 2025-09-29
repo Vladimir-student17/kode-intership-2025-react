@@ -11,6 +11,7 @@ interface Props {
 
 const Home: FC<Props> = ({ className }) => {
   const [userList, setUserList] = useState<UsersList | undefined>(undefined);
+  
   return (
     <div className={cn(className, styles.home)}>
       <TopAppBar setData={setUserList} />

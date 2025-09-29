@@ -9,6 +9,11 @@
   justify-content: center;
   background-color: $color-bg-modal;
   animation: showModal 0.3s forwards;
+  z-index: 1;
+
+  @include vp-767 {
+    align-items: flex-end;
+  }
 }
 
 .modalWindow {
@@ -16,14 +21,17 @@
   display: flex;
   gap: 35px;
   flex-direction: column;
-  z-index: 1;
   width: 341px;
   height: 144px;
   padding: 24px 16px;
-
   border-radius: 20px;
-
   background-color: $color-white;
+
+  @include vp-767 {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+  }
 
   &__top {
     display: flex;
