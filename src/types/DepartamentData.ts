@@ -13,6 +13,7 @@ export const DepartametmSchema = z.union([
   z.literal("backend"),
   z.literal("support"),
   z.literal("analytics"),
+    z.literal("all"),
 ]);
 
-export type Departament = z.infer<typeof DepartametmSchema>;
+export type DepartamentData = z.infer<typeof DepartametmSchema>;

@@ -1,22 +1,20 @@
 import cn from "classnames";
-import { Suspense, type FC } from "react";
+import { useState, type FC } from "react";
 import styles from "./styles.module.scss";
 import TopAppBar from "@/components/ToppAppBar";
+import type { UsersList } from "@/types/UserData";
+import UserList from "@/components/UserList";
 
 interface Props {
   className?: string;
 }
 
 const Home: FC<Props> = ({ className }) => {
+  const [userList, setUserList] = useState<UsersList | undefined>(undefined);
   return (
     <div className={cn(className, styles.home)}>
-      <TopAppBar />
-      <Suspense fallback={<span>Loading list...</span>}>
-        <ul>
-          <li>List 0ne</li>
-          <li>List Two</li>
-        </ul>
-      </Suspense>
+      <TopAppBar setData={setUserList} />
+      <UserList data={userList} />
     </div>
   );
 };

@@ -1,0 +1,38 @@
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(100vh / 4);
+  gap: 8px;
+
+  &__text {
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 22px;
+    color: $color-black-text;
+  }
+
+  &__descrip {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-gray-text;
+  }
+
+  &__img {
+    animation: rotateIMG 1s infinite;
+  }
+}
+
+@keyframes rotateIMG {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  90% {
+    transform: rotate(15deg);
+  }
+}

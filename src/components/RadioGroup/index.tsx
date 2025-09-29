@@ -1,14 +1,15 @@
-import type { Departament } from "@/types/Departament";
+import type { DepartamentData } from "@/types/DepartamentData";
 import { type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
+import type { Departament } from "@/types/Departament";
 
 interface Props {
   className?: string;
   name: string;
   options: Departament[];
   defaultValue: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>
+  onChange: React.Dispatch<React.SetStateAction<DepartamentData>>;
 }
 const RadioGroup: FC<Props> = ({
   className,
@@ -17,16 +18,13 @@ const RadioGroup: FC<Props> = ({
   defaultValue,
   onChange,
 }) => {
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    console.log(newValue);
-    if(newValue) {
-       onChange(newValue);
+    const newValue = event.target.value as DepartamentData;
+    if (newValue) {
+      onChange(newValue);
     } else {
-      onChange('')
-    }   
-
+      onChange("all");
+    }
   };
 
   return (

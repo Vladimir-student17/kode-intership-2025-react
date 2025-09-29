@@ -1,13 +1,14 @@
 .modalWrapper {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $color-bg-modal;
+  animation: showModal 0.3s forwards;
 }
 
 .modalWindow {
@@ -116,5 +117,16 @@
       left: -34px;
       top: 0;
     }
+  }
+}
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }
