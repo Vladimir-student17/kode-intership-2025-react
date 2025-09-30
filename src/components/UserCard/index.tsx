@@ -4,24 +4,36 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import ImageElement from "../ImageElement";
+import nameMonth from "@/configs/nameMonth";
 
 interface Props {
   className?: string;
   data: User;
+  needBirthday?: boolean;
 }
 
-const UserCard: FC<Props> = ({ className, data }) => {
+const UserCard: FC<Props> = ({ className, data, needBirthday = false }) => {
+  const dayBirthday = new Date(data.birthday).getDate();
+  const monthBirthday = nameMonth[Number(new Date(data.birthday).getMonth())];
   return (
-    <Link to={`/profile/${data.id}`}>
+    <Link to={`/details/:${data.id}`}>
       <div className={cn(className, styles.userCard)}>
-        <ImageElement url={data.avatarUrl}  className={styles.userCard__img}/>        
+        <ImageElement url={data.avatarUrl} className={styles.userCard__img} />
         <div className={styles.userCard__info}>
           <p className={styles.userCard__fullName}>
             {data.firstName} {data.lastName}
             <span className={styles.userCard__tag}>{data.userTag}</span>
           </p>
-          <p className={styles.userCard__departament}>{data.department.slice(0,1).toUpperCase()+data.department.slice(1)}</p>
+          <p className={styles.userCard__departament}>
+            {data.department.slice(0, 1).toUpperCase() +
+              data.department.slice(1)}
+          </p>
         </div>
+        {needBirthday && (
+          <span className={styles.userCard__birthday}>
+            {dayBirthday} {monthBirthday}
+          </span>
+        )}
       </div>
     </Link>
   );

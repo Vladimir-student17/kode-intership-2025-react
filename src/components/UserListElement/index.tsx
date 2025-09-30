@@ -8,9 +8,15 @@ interface Props {
   className?: string;
   data: UsersList;
   needYear?: boolean;
+  needBirthday?: boolean;
 }
 
-const UserListElement: FC<Props> = ({ data, className, needYear = false }) => {
+const UserListElement: FC<Props> = ({
+  data,
+  className,
+  needYear = false,
+  needBirthday = false,
+}) => {
   const nowYear = new Date().getFullYear();
   return (
     <>
@@ -23,8 +29,7 @@ const UserListElement: FC<Props> = ({ data, className, needYear = false }) => {
         {data.map((user) => {
           return (
             <li className={styles.userList__item} key={user.id}>
-              <UserCard data={user} />
-              <span>{user.birthday}</span>
+              <UserCard data={user} needBirthday={needBirthday} />
             </li>
           );
         })}

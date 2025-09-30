@@ -4,7 +4,7 @@ import { lazy, Suspense } from "react";
 import Loader from "./components/Loader";
 
 const LazyHome = lazy(() => import("./components/pages/Home"));
-const LazyProfile = lazy(() => import("./components/pages/Profile"));
+const LazyUserDetails = lazy(() => import("./components/pages/UserDetails"));
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
           <main className="main">
             <Routes>
               <Route path="/" element={<LazyHome />} />
-              <Route path="/profile" element={<LazyProfile />} />
+              <Route path="/details/:userID" element={<LazyUserDetails />} />
             </Routes>
           </main>
         </Layout>

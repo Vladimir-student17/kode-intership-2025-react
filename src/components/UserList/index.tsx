@@ -23,10 +23,10 @@ const UserList: FC<Props> = ({ data }) => {
         return (
           <>
             {objData.thisYear.length !== 0 && (
-              <UserListElement data={objData.thisYear} />
+              <UserListElement data={objData.thisYear} needBirthday />
             )}
             {objData.nextYear.length !== 0 && (
-              <UserListElement data={objData.nextYear} needYear />
+              <UserListElement data={objData.nextYear} needYear needBirthday />
             )}
           </>
         );

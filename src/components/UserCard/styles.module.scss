@@ -49,6 +49,17 @@
     line-height: 16px;
     color: $color-dark-gray;
   }
+
+  &__birthday {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: $color-dark-gray;
+  }
 }
 
 @keyframes show {
