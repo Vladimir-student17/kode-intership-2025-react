@@ -1,3 +1,4 @@
+import type { SortArrayBirthday } from "@/types/SortArrayBirthday";
 import type { UsersList } from "@/types/UserData";
 
 function startMSYear(date: Date | string): number {
@@ -7,8 +8,8 @@ function startMSYear(date: Date | string): number {
   return +currentDate - +startCurrentYear;
 }
 
-export function SortBirthday(arr: UsersList) {
-  const owenObj: Record<string, UsersList> = {};
+function SortBirthday(arr: UsersList):SortArrayBirthday {
+  let owenObj: SortArrayBirthday;
   const thisYear: UsersList = [];
   const nextYear: UsersList = [];
 
@@ -19,16 +20,15 @@ export function SortBirthday(arr: UsersList) {
     .forEach((item) => {
       const birthday = new Date(item.birthday);
       const now = new Date();
-      if (startMSYear(now) >= startMSYear(birthday) + 24 * 3600 * 1000) {
+      if (startMSYear(now) >= startMSYear(birthday)) {
         nextYear.push(item);
       } else {
         thisYear.push(item);
       }
     });
-
-  owenObj.ThisYear = thisYear;
-  owenObj.NextYear = nextYear;
+  owenObj = { thisYear, nextYear };
 
   return owenObj;
 }
 
+export default SortBirthday;

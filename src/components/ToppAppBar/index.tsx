@@ -10,6 +10,7 @@ import type { RootState } from "@/store/store";
 import type { UsersList } from "@/types/UserData";
 import { useGetUsersQuery } from "@/store/getUsers";
 import type { DepartamentData } from "@/types/DepartamentData";
+import findUser from "@/configs/findUsers";
 
 interface Props {
   className?: string;
@@ -26,16 +27,19 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
     refetchOnReconnect: true,
   });
   useEffect(() => {
-    
-    setData(data);
-  }, [data]);
+    if (data) {
+      const newArr = [...findUser(data, valueInput)];
+
+      setData(newArr);
+    }
+  }, [data, setData, valueInput]);
 
   return (
     <div className={cn(className, styles.form)}>
       <InputField onInputChange={setValueInput} value={valueInput} />
       <RadioGroup
         options={departmentConfig}
-        name="deportaments"
+        name="departments"
         defaultValue={departament}
         onChange={setDepartament}
       />
