@@ -14,7 +14,7 @@ interface Props {
 
 const UserCard: FC<Props> = ({ className, data, needBirthday = false }) => {
   const dayBirthday = new Date(data.birthday).getDate();
-  const monthBirthday = nameMonth[Number(new Date(data.birthday).getMonth())];
+  const monthBirthday = nameMonth[Number(new Date(data.birthday).getMonth())].slice(0,3);
   return (
     <Link to={`/details/:${data.id}`}>
       <div className={cn(className, styles.userCard)}>

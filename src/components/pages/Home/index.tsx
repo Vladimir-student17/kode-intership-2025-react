@@ -4,12 +4,14 @@ import styles from "./styles.module.scss";
 import TopAppBar from "@/components/ToppAppBar";
 import type { UsersList } from "@/types/UserData";
 import UserList from "@/components/UserList";
+import useSetPathPage from "@/hooks/useSetPathPage";
 
 interface Props {
   className?: string;
 }
 
 const Home: FC<Props> = ({ className }) => {
+  useSetPathPage()
   const [userList, setUserList] = useState<UsersList | undefined>(undefined);
   
   return (

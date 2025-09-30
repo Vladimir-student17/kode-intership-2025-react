@@ -9,7 +9,7 @@ const LazyUserDetails = lazy(() => import("./components/pages/UserDetails"));
 const App = () => {
   return (
     <>
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         <Layout>
           <main className="main">
             <Routes>
