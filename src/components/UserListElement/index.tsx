@@ -1,8 +1,8 @@
-import type { FC } from "react";
-import UserCard from "../UserCard";
+import { lazy, Suspense, type FC } from "react";
 import type { UsersList } from "@/types/UserData";
 import cn from "classnames";
 import styles from "./styles.module.scss";
+import SkeletonCard from "../SkeletonCard";
 
 interface Props {
   className?: string;
@@ -10,6 +10,8 @@ interface Props {
   needYear?: boolean;
   needBirthday?: boolean;
 }
+
+const LazyUserCard = lazy(() => import("../UserCard"));
 
 const UserListElement: FC<Props> = ({
   data,
@@ -29,7 +31,9 @@ const UserListElement: FC<Props> = ({
         {data.map((user) => {
           return (
             <li className={styles.userList__item} key={user.id}>
-              <UserCard data={user} needBirthday={needBirthday} />
+              <Suspense fallback={<SkeletonCard />}>
+                <LazyUserCard data={user} needBirthday={needBirthday} />
+              </Suspense>
             </li>
           );
         })}

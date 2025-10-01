@@ -6,7 +6,6 @@ import type { RootState } from "@/store/store";
 import SortBirthday from "@/configs/sortUsersForDate";
 import type { SortArrayBirthday } from "@/types/SortArrayBirthday";
 import UserListElement from "../UserListElement";
-import Loader from "../Loader";
 
 interface Props {
   className?: string;
@@ -35,9 +34,7 @@ const UserList: FC<Props> = ({ data }) => {
     } else {
       return <EmptyList />;
     }
-  } else {
-    return <Loader />;
-  }
+  } 
 };
 
 export default UserList;

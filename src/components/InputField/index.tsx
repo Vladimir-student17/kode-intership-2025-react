@@ -47,7 +47,9 @@ const InputField: FC<Props> = ({
     <div className={cn(styles.container, className)}>
       <Button
         className={styles.buttonSearch}
-        onClick={() => console.log("click")}
+        onClick={() => {
+          if (inputRef.current) handleInputChange(inputRef.current?.value);
+        }}
         icon={
           <Icon
             iconId="icon-search"

@@ -11,6 +11,7 @@ import type { UsersList } from "@/types/UserData";
 import { useGetUsersQuery } from "@/store/getUsers";
 import type { DepartamentData } from "@/types/DepartamentData";
 import findUser from "@/configs/findUsers";
+import { useSearchParams } from "react-router-dom";
 
 interface Props {
   className?: string;
@@ -19,9 +20,13 @@ interface Props {
 
 const TopAppBar: FC<Props> = ({ className, setData }) => {
   const showModal = useSelector((state: RootState) => state.showModal);
-
-  const [valueInput, setValueInput] = useState<string>("");
-  const [departament, setDepartament] = useState<DepartamentData>("all");
+  const [searchParam, setSearchParam] = useSearchParams();
+  const [valueInput, setValueInput] = useState<string>(
+    searchParam.get("search") || ""
+  );
+  const [departament, setDepartament] = useState<DepartamentData>(
+    (searchParam.get("departament") as DepartamentData) || "all"
+  );
   const { data } = useGetUsersQuery(departament, {
     pollingInterval: 1000 * 60 * 5,
     refetchOnReconnect: true,
@@ -29,10 +34,13 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
   useEffect(() => {
     if (data) {
       const newArr = [...findUser(data, valueInput)];
-
       setData(newArr);
     }
-  }, [data, setData, valueInput]);
+    setSearchParam({
+      search: valueInput.toLowerCase(),
+      departament: departament.toLowerCase(),
+    });
+  }, [data, setData, valueInput, departament]);
 
   return (
     <div className={cn(className, styles.form)}>

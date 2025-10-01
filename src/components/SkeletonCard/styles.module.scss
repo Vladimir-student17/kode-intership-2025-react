@@ -1,0 +1,53 @@
+.userCard {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  border-radius: 8px;
+
+  &__img {
+    display: block;
+    height: 72px;
+    width: 72px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
+    background-size: 200% 100%;
+    animation: waveMove 4s infinite;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  &__fullName {
+    margin: 0;
+    width: 114px;
+    height: 16px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
+    background-size: 200% 100%;
+    animation: waveMove 4s infinite;
+  }
+
+  &__departament {
+    margin: 0;
+    width: 80px;
+    height: 12px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #f3f3f6 0%, #fafafa 100%);
+    background-size: 200% 100%;
+    animation: waveMove 4s infinite;
+  }
+}
+
+@keyframes waveMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
