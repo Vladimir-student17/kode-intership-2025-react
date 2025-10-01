@@ -14,11 +14,8 @@ const Layout: FC<Props> = ({ className, children }) => {
   const pagePath = useSelector<RootState>((state) => state.page);
   return (
     <div className={cn(className, styles.layout)}>
-      <div className="container">
-        {pagePath === "/" && <Header className={cn(styles.header)} />}
-
-        {children}
-      </div>
+      {pagePath === "/" && <Header className={cn(styles.header)} />}
+      {children}
     </div>
   );
 };

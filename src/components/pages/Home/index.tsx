@@ -11,13 +11,15 @@ interface Props {
 }
 
 const Home: FC<Props> = ({ className }) => {
-  useSetPathPage()
+  useSetPathPage();
   const [userList, setUserList] = useState<UsersList | undefined>(undefined);
-  
+
   return (
-    <div className={cn(className, styles.home)}>
-      <TopAppBar setData={setUserList} />
-      <UserList data={userList} />
+    <div className="container">
+      <div className={cn(className, styles.home)}>
+        <TopAppBar setData={setUserList} />
+        <UserList data={userList} />
+      </div>
     </div>
   );
 };

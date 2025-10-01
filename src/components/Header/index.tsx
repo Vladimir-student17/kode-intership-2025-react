@@ -8,9 +8,11 @@ interface Props {
 
 const Header: FC<Props> = ({ className }) => {
   return (
-    <header className={cn(className, styles.header)}>
-      <span className={styles.header__title}>Поиск</span>
-    </header>
+    <div className="container">
+      <header className={cn(className, styles.header)}>
+        <span className={styles.header__title}>Поиск</span>
+      </header>
+    </div>
   );
 };
 

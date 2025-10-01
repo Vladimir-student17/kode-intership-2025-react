@@ -13,6 +13,7 @@ import formatPhone from "@/configs/formatPhone";
 import getDateBirthday from "@/configs/getDateBirthday";
 import ageCalculation from "@/configs/ageCalculation";
 import godOrLet from "@/configs/godOrLet";
+import firstUpperCase from "@/configs/firstUpperCase";
 
 interface Props {
   className?: string;
@@ -38,27 +39,40 @@ const UserDetails: FC<Props> = ({ className }) => {
             onClick={() => navigate(-1)}
             icon={<Icon iconId="icon-back-arrow" />}
           />
-          <ImageElement size={104} url={userData.avatarUrl} />
+          <div className={styles.details__card}>
+            <ImageElement size={104} url={userData.avatarUrl} />
+            <p className={styles.details__fullName}>
+              {userData.firstName} {userData.lastName}
+              <span>{userData.userTag}</span>
+            </p>
+            <span className={styles.details__departament}>
+              {firstUpperCase(userData.department)}
+            </span>
+          </div>
         </div>
-        <div className={styles.details__rowInfo}>
-          <Icon iconId="icon-star" />
-          <span className={styles.details__birthday}>
-            {getDateBirthday(userData.birthday)}
-          </span>
-          <span className={styles.details__fullYear}>
-            {ageCalculation(userData.birthday)}{" "}
-            {godOrLet(ageCalculation(userData.birthday))}
-          </span>
-        </div>
-        <div className={styles.details__rowInfo}>
-          <Icon iconId="icon-phone" />
-          <a
-            type="phone"
-            href={`tel:${userData.phone}`}
-            className={styles.details__phone}
-          >
-            {formatPhone(userData.phone)}
-          </a>
+        <div className="container">
+          <ul className={styles.details__listInfo}>
+            <li className={styles.details__rowInfo}>
+              <Icon iconId="icon-star" />
+              <span className={styles.details__text}>
+                {getDateBirthday(userData.birthday)}
+              </span>
+              <span className={styles.details__fullYear}>
+                {ageCalculation(userData.birthday)}{" "}
+                {godOrLet(ageCalculation(userData.birthday))}
+              </span>
+            </li>
+            <li className={styles.details__rowInfo}>
+              <Icon iconId="icon-phone" />
+              <a
+                type="phone"
+                href={`tel:${userData.phone}`}
+                className={styles.details__text}
+              >
+                {formatPhone(userData.phone)}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     );
