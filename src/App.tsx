@@ -14,7 +14,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<LazyHome />} />
             <Route path="/details/:userID" element={<LazyUserDetails />} />
-            <Route path="" element={<ErrorMessage />} />
+            <Route path="*" element={<ErrorMessage />} />
           </Routes>
         </main>
       </Layout>

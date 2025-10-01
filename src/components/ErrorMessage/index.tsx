@@ -4,12 +4,14 @@ import cn from "classnames";
 import img from "../../../public/images/flying-saucer.png";
 import imgx2 from "../../../public/images/flying-saucer@x2.png";
 import Button from "../Button";
+import type { FallbackProps } from "react-error-boundary";
 
 interface Props {
   className?: string;
+  fallProps?: FallbackProps;
 }
 
-const ErrorMessage: FC<Props> = ({ className }) => {
+const ErrorMessage: FC<Props> = ({ className, fallProps }) => {
   return (
     <div className={cn(className, styles.emptyList)}>
       <img
@@ -26,7 +28,10 @@ const ErrorMessage: FC<Props> = ({ className }) => {
       <span className={styles.emptyList__descrip}>
         Постараемся быстро починить
       </span>
-      <Button text="Попробовать снова" onClick={()=> alert("refetch")}/>
+      <Button
+        text="Попробовать снова"
+        onClick={() => fallProps?.resetErrorBoundary}
+      />
     </div>
   );
 };
