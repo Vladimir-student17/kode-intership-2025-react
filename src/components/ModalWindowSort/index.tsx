@@ -15,6 +15,7 @@ interface Props {
 const ModalWindowSort: FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
   const valueSort = useSelector((state: RootState) => state.sortType);
+  const closeModalTimeMS:number = 400;
 
   return (
     <div className={cn(className, styles.modalWrapper)}>
@@ -36,7 +37,10 @@ const ModalWindowSort: FC<Props> = ({ className }) => {
               name="sort"
               value={"abc"}
               checked={valueSort === "abc"}
-              onChange={() => dispatch(setAbcType())}
+              onChange={() => {
+                dispatch(setAbcType());
+                setTimeout(() => dispatch(closeModal()), closeModalTimeMS);
+              }}
             />
             <span
               className={cn(styles.custom_inputRadio__checkbox, {
@@ -59,7 +63,10 @@ const ModalWindowSort: FC<Props> = ({ className }) => {
               name="sort"
               value={"birthday"}
               checked={valueSort === "birthday"}
-              onChange={() => dispatch(setBirthdayType())}
+              onChange={() => {
+                dispatch(setBirthdayType());
+                setTimeout(() => dispatch(closeModal()), closeModalTimeMS);
+              }}
             />
             <span
               className={cn(styles.custom_inputRadio__checkbox, {

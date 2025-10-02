@@ -34,7 +34,7 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
   useEffect(() => {
     if (data) {
       const newArr = [...findUser(data, valueInput)];
-      setData(newArr);
+      setTimeout(() => setData(newArr), 400);
     }
     setSearchParam({
       search: valueInput.toLowerCase(),

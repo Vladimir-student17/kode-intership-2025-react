@@ -34,7 +34,8 @@ const UserList: FC<Props> = ({ data }) => {
     } else {
       return <EmptyList />;
     }
-  } 
+  }
+  return <UserListElement data={[]} />;
 };
 
 export default UserList;

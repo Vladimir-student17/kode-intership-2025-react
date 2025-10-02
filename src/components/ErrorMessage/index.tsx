@@ -9,9 +9,10 @@ import type { FallbackProps } from "react-error-boundary";
 interface Props {
   className?: string;
   fallProps?: FallbackProps;
+  refetch?: () => void;
 }
 
-const ErrorMessage: FC<Props> = ({ className, fallProps }) => {
+const ErrorMessage: FC<Props> = ({ className, fallProps, refetch }) => {
   return (
     <div className={cn(className, styles.emptyList)}>
       <img
@@ -28,10 +29,10 @@ const ErrorMessage: FC<Props> = ({ className, fallProps }) => {
       <span className={styles.emptyList__descrip}>
         Постараемся быстро починить
       </span>
-      <Button
-        text="Попробовать снова"
-        onClick={() => fallProps?.resetErrorBoundary}
-      />
+      {refetch && <Button text="Попробовать снова" onClick={() => refetch} />}
+      {fallProps && (
+        <Button text="Попробовать снова" onClick={() => fallProps} />
+      )}
     </div>
   );
 };

@@ -5,7 +5,8 @@ function findUser(data: UsersList, phrase: string ): UsersList {
     .filter(
       (item) =>
         item.firstName.toLocaleLowerCase().includes(phrase.toLowerCase()) ||
-        item.lastName.toLocaleLowerCase().includes(phrase.toLowerCase())
+        item.lastName.toLocaleLowerCase().includes(phrase.toLowerCase()) || 
+        item.userTag.toLocaleLowerCase().includes(phrase.toLowerCase())
     )
     .sort((a, b) => a.firstName.localeCompare(b.firstName));
 }

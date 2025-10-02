@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store/store";
 import { openModal } from "@/store/slices/modalWindowSlice";
 
+
 interface Props {
   className?: string;
   onInputChange: React.Dispatch<React.SetStateAction<string>>;
