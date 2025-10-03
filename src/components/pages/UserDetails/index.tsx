@@ -5,9 +5,9 @@ import useGetUserByID from "@/hooks/useGetUserByID";
 import useSetPathPage from "@/hooks/useSetPathPage";
 import { useGetUsersQuery } from "@/store/getUsers";
 import type { User } from "@/types/UserData";
-import DetailsHeader from "@/components/DetailsHeader";
-import DetailsList from "@/components/DetailsList";
 import styles from "./styles.module.scss"
+import DetailsHeader from "@/components/entities/DetailsHeader";
+import DetailsList from "@/components/entities/DetailsList";
 
 interface Props {
   className?: string;

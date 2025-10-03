@@ -9,7 +9,7 @@ interface Props {
 
 const Header: FC<Props> = ({ className }) => {
   const { isError, isLoading, refetch } = useGetUsersQuery("all", {
-    pollingInterval: 10000,
+    pollingInterval: 100000,
     refetchOnReconnect: true,
     refetchOnFocus: true,
     skip: false,

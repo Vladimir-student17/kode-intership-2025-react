@@ -1,10 +1,8 @@
 import { useEffect, useState, type FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
-import InputField from "../InputField";
 import { departmentConfig } from "@/configs/departamentConfig";
-import RadioGroup from "@/components/RadioGroup";
-import ModalWindowSort from "../ModalWindowSort";
+import RadioGroup from "@/components/entities/RadioGroup";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 import type { UsersList } from "@/types/UserData";
@@ -12,6 +10,8 @@ import { useGetUsersQuery } from "@/store/getUsers";
 import type { DepartamentData } from "@/types/DepartamentData";
 import findUser from "@/configs/findUsers";
 import { useSearchParams } from "react-router-dom";
+import InputField from "../../UI/InputField";
+import ModalWindowSort from "../ModalWindowSort";
 
 interface Props {
   className?: string;

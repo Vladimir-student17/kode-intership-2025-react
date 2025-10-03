@@ -2,11 +2,12 @@ import type { User } from "@/types/UserData";
 import type { FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
-import Button from "../Button";
 import { useNavigate } from "react-router-dom";
-import Icon from "../Icon";
-import ImageElement from "../ImageElement";
+
 import firstUpperCase from "@/configs/firstUpperCase";
+import Button from "@/components/UI/Button";
+import Icon from "@/components/UI/Icon";
+import ImageElement from "@/components/UI/ImageElement";
 
 interface Props {
   className?: string;

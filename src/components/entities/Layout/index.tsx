@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
-import Header from "@components/Header";
+import Header from "@/components/entities/Header";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 

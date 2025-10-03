@@ -1,8 +1,8 @@
 import { lazy, Suspense, type FC } from "react";
 import type { UsersList } from "@/types/UserData";
 import cn from "classnames";
-import styles from "./styles.module.scss";
-import SkeletonCard from "../SkeletonCard";
+import styles from "./styles.module.scss"
+import SkeletonCard from "../../UI/SkeletonCard";
 
 interface Props {
   className?: string;

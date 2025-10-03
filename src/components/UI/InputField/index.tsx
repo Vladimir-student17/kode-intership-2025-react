@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, type FC } from "react";
-import Button from "../Button";
-import Icon from "../Icon";
 import cn from "classnames";
 import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store/store";
 import { openModal } from "@/store/slices/modalWindowSlice";
+import Icon from "../Icon";
+import Button from "../Button";
 
 interface Props {
   className?: string;

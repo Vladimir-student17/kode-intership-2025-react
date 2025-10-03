@@ -1,12 +1,12 @@
 import { type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
-import Button from "../Button";
-import Icon from "../Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "@/store/slices/modalWindowSlice";
 import { setAbcType, setBirthdayType } from "@/store/slices/sortSlice";
 import type { RootState } from "@/store/store";
+import Button from "@/components/UI/Button";
+import Icon from "@/components/UI/Icon";
 
 interface Props {
   className?: string;

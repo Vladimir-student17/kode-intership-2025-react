@@ -1,6 +1,6 @@
 import { type FC, useEffect, useState } from "react";
-import plug from "../../../public/images/plug.png";
-import plugX2 from "../../../public/images/plug@x2.png";
+import plug from "../../../../public/images/plug.png";
+import plugX2 from "../../../../public/images/plug@x2.png";
 
 interface Props {
   url: string;

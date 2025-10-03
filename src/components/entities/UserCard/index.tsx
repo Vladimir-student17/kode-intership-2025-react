@@ -3,8 +3,8 @@ import type { FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
-import ImageElement from "../ImageElement";
 import nameMonth from "@/configs/nameMonth";
+import ImageElement from "@/components/UI/ImageElement";
 
 interface Props {
   className?: string;

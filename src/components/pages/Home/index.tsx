@@ -1,9 +1,9 @@
 import cn from "classnames";
 import { useState, type FC } from "react";
 import styles from "./styles.module.scss";
-import TopAppBar from "@/components/ToppAppBar";
+import TopAppBar from "@/components/entities/ToppAppBar";
 import type { UsersList } from "@/types/UserData";
-import UserList from "@/components/UserList";
+import UserList from "@/components/entities/UserList";
 import useSetPathPage from "@/hooks/useSetPathPage";
 
 interface Props {

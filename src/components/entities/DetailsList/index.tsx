@@ -2,11 +2,11 @@ import type { User } from "@/types/UserData";
 import type { FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
-import Icon from "../Icon";
 import getDateBirthday from "@/configs/getDateBirthday";
 import ageCalculation from "@/configs/ageCalculation";
 import godOrLet from "@/configs/godOrLet";
 import formatPhone from "@/configs/formatPhone";
+import Icon from "@/components/UI/Icon";
 
 interface Props {
   className?: string;

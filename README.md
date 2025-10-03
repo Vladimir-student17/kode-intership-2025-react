@@ -20,6 +20,7 @@ Telegram: @Vladimir09_17
 public/                # Папка директория в корне 
 src/
     ├── components/    # Компоненты 
+    ├── cinfigs/       # Переиспользуемые функции
     |   ├── pages/     # Страницы
     |   ├── UI/        # UI компоненты (button, icon)
     |   └── entities/  # Бизнес-сущности (user, product, department)

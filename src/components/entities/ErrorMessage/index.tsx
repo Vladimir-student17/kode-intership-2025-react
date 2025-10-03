@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
-import img from "../../../public/images/flying-saucer.png";
-import imgx2 from "../../../public/images/flying-saucer@x2.png";
-import Button from "../Button";
+import img from "../../../../public/images/flying-saucer.png";
+import imgx2 from "../../../../public/images/flying-saucer@x2.png";
 import type { FallbackProps } from "react-error-boundary";
+import Button from "@/components/UI/Button";
 
 interface Props {
   className?: string;

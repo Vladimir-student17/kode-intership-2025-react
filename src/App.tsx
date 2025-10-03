@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
+import Layout from "./components/entities/Layout";
 import { lazy } from "react";
-import ErrorMessage from "./components/ErrorMessage";
+import ErrorMessage from "./components/entities/ErrorMessage";
 
 const LazyHome = lazy(() => import("./components/pages/Home"));
 const LazyUserDetails = lazy(() => import("./components/pages/UserDetails"));
