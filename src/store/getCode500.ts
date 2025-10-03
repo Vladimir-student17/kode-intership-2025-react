@@ -8,10 +8,10 @@ export const getCode500 = createApi({
       "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/",
   }),
   endpoints: (build) => ({
-    getCode500: build.query<number, void>({
+    getCode500: build.query<string, void>({
       query: () => `/users?__code=500&__dynamic=true`,
-      transformResponse: (_response: any, meta): number => {
-        return meta?.response?.status || 0;
+      transformResponse: (response: string,): string => {
+        return response;
       },
     }),
   }),

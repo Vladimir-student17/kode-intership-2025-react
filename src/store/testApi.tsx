@@ -8,10 +8,10 @@ export const testApi = createApi({
       "https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/",
   }),
   endpoints: (build) => ({
-    getTest: build.query<number, void>({
-      query: () => `users?__dynamic=true`,
-      transformResponse: (_response: any, meta): number => {
-        return meta?.response?.status || 0;
+    getTest: build.query<any, string>({
+      query: (set) => `users?__dynamic=${set}`,
+      transformResponse: (response: any) => {
+        return response;
       },
     }),
   }),

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ className, children }) => {
-  const pagePath = useSelector<RootState>((state) => state.page);
+  const pagePath = useSelector((state: RootState) => state.page);
   return (
     <div className={cn(className, styles.layout)}>
       {pagePath === "/" && <Header />}

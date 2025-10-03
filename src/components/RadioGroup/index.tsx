@@ -15,7 +15,7 @@ const RadioGroup: FC<Props> = ({
   className,
   name,
   options,
-  defaultValue,
+  defaultValue = "all",
   onChange,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

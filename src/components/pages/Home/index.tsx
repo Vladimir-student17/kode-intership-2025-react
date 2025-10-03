@@ -14,12 +14,10 @@ const Home: FC<Props> = ({ className }) => {
   useSetPathPage();
   const [userList, setUserList] = useState<UsersList | undefined>(undefined);
 
-
   return (
     <div className="container">
       <div className={cn(className, styles.home)}>
         <TopAppBar setData={setUserList} />
-
         <UserList data={userList} />
       </div>
     </div>

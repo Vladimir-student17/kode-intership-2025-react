@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store/store";
 import { openModal } from "@/store/slices/modalWindowSlice";
 
-
 interface Props {
   className?: string;
   onInputChange: React.Dispatch<React.SetStateAction<string>>;
@@ -20,13 +19,13 @@ const InputField: FC<Props> = ({
   className,
   onInputChange,
   value,
-  placeholder = "Введи имя, тег, почту...",
+  placeholder = "Введи имя, фамилию, тег...",
 }) => {
   const [lengthValue, setLengthValue] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useDispatch<AppDispatch>();
-  const sortType = useSelector<RootState>((state) => state.sortType);
+  const sortType = useSelector((state: RootState) => state.sortType);
 
   useEffect(() => {
     setLengthValue(value.length);

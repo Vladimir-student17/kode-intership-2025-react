@@ -1,17 +1,58 @@
 import cn from "classnames";
-import type { FC } from "react";
+import { useEffect, type FC } from "react";
 import styles from "./styles.module.scss";
+import { useGetUsersQuery } from "@/store/getUsers";
 
 interface Props {
   className?: string;
 }
 
 const Header: FC<Props> = ({ className }) => {
+  const { isError, isLoading, refetch } = useGetUsersQuery("all", {
+    pollingInterval: 10000,
+    refetchOnReconnect: true,
+    refetchOnFocus: true,
+    skip: false,
+  });
+
+  useEffect(() => {
+    if (isError) {
+      const timer = setTimeout(() => {
+        refetch();
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isError, refetch]);
+
   return (
-    <div className="container">
-      <header className={cn(className, styles.header)}>
-        <span className={styles.header__title}>Поиск</span>
-      </header>
+    <div
+      className={cn(className, {
+        [styles.header__error]: isError,
+        [styles.header__loading]: isLoading,
+      })}
+    >
+      <div className="container">
+        <header className={cn(className, styles.header)}>
+          <span
+            className={cn(styles.header__title, {
+              [styles.header__title__white]: isError || isLoading,
+            })}
+          >
+            Поиск
+          </span>
+          {isLoading && (
+            <span className={styles.header__message}>
+              Секундочку, гружусь...
+            </span>
+          )}
+          {isError && (
+            <span className={styles.header__message}>
+              Не могу обновить данные. Проверь соединение с интернетом.
+            </span>
+          )}
+        </header>
+      </div>
     </div>
   );
 };

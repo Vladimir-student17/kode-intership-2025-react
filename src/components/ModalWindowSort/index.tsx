@@ -1,12 +1,18 @@
-import { type FC } from "react";
+import { useEffect, type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
 import Button from "../Button";
 import Icon from "../Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "@/store/slices/modalWindowSlice";
-import { setAbcType, setBirthdayType } from "@/store/slices/sortSlice";
+import {
+  setAbcType,
+  setBirthdayType,
+  setValueType,
+} from "@/store/slices/sortSlice";
 import type { RootState } from "@/store/store";
+import { useSearchParams } from "react-router-dom";
+import type { SortType } from "@/types/typeSort";
 
 interface Props {
   className?: string;
@@ -14,8 +20,15 @@ interface Props {
 
 const ModalWindowSort: FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
+  const [searchParam, setSearchParam] = useSearchParams();
   const valueSort = useSelector((state: RootState) => state.sortType);
-  const closeModalTimeMS:number = 400;
+  const closeModalTimeMS: number = 400;
+
+  useEffect(() => {
+    if (searchParam.has("sort")) {
+      dispatch(setValueType(searchParam.get("sort") as SortType));
+    }
+  }, [valueSort, searchParam]);
 
   return (
     <div className={cn(className, styles.modalWrapper)}>
@@ -38,6 +51,9 @@ const ModalWindowSort: FC<Props> = ({ className }) => {
               value={"abc"}
               checked={valueSort === "abc"}
               onChange={() => {
+                setSearchParam({
+                  sort: "abc",
+                });
                 dispatch(setAbcType());
                 setTimeout(() => dispatch(closeModal()), closeModalTimeMS);
               }}
@@ -64,6 +80,9 @@ const ModalWindowSort: FC<Props> = ({ className }) => {
               value={"birthday"}
               checked={valueSort === "birthday"}
               onChange={() => {
+                setSearchParam({
+                  sort: "birthday",
+                });
                 dispatch(setBirthdayType());
                 setTimeout(() => dispatch(closeModal()), closeModalTimeMS);
               }}

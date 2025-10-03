@@ -20,27 +20,46 @@ interface Props {
 
 const TopAppBar: FC<Props> = ({ className, setData }) => {
   const showModal = useSelector((state: RootState) => state.showModal);
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParams, setSearchParam] = useSearchParams();
   const [valueInput, setValueInput] = useState<string>(
-    searchParam.get("search") || ""
+    searchParams.get("search") || ""
   );
   const [departament, setDepartament] = useState<DepartamentData>(
-    (searchParam.get("departament") as DepartamentData) || "all"
+    searchParams.get("departament") as DepartamentData
   );
-  const { data } = useGetUsersQuery(departament, {
+  const { data } = useGetUsersQuery(departament || "all", {
     pollingInterval: 1000 * 60 * 5,
     refetchOnReconnect: true,
   });
+
   useEffect(() => {
     if (data) {
       const newArr = [...findUser(data, valueInput)];
       setTimeout(() => setData(newArr), 400);
     }
-    setSearchParam({
-      search: valueInput.toLowerCase(),
-      departament: departament.toLowerCase(),
-    });
   }, [data, setData, valueInput, departament]);
+
+  useEffect(() => {
+    const newSearchParamsDep = new URLSearchParams(searchParams);
+
+    if (departament && departament !== "all") {
+      newSearchParamsDep.set("departament", departament);
+    } else {
+      newSearchParamsDep.delete("departament");
+    }
+    setSearchParam(newSearchParamsDep);
+  }, [valueInput, departament]);
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    if (valueInput) {
+      newSearchParams.set("search", valueInput.toLowerCase().trim());
+    } else {
+      newSearchParams.delete("search");
+    }
+    setSearchParam(newSearchParams);
+  }, [valueInput]);
 
   return (
     <div className={cn(className, styles.form)}>
