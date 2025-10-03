@@ -2,14 +2,12 @@ import { configureStore } from "@reduxjs/toolkit/react";
 import sortReducer from "./slices/sortSlice";
 import modalReducer from "./slices/modalWindowSlice";
 import togglePathPage from "./slices/togglePageSlice";
-import inputReducer from "./slices/showInputField";
 import { userApi } from "./getUsers";
 import { testApi } from "./testApi";
 import { getCode500 } from "./getCode500";
 
 const store = configureStore({
   reducer: {
-    inputState: inputReducer,
     sortType: sortReducer,
     showModal: modalReducer,
     page: togglePathPage,
@@ -22,7 +20,7 @@ const store = configureStore({
     getDefaultMiddleware().concat(
       userApi.middleware,
       testApi.middleware,
-      getCode500.middleware,
+      getCode500.middleware
     ),
 });
 

@@ -7,6 +7,7 @@ import { useGetUsersQuery } from "@/store/getUsers";
 import type { User } from "@/types/UserData";
 import DetailsHeader from "@/components/DetailsHeader";
 import DetailsList from "@/components/DetailsList";
+import styles from "./styles.module.scss"
 
 interface Props {
   className?: string;
@@ -24,7 +25,7 @@ const UserDetails: FC<Props> = ({ className }) => {
   }, [data, userID]);
   if (userData) {
     return (
-      <div className={cn(className)}>
+      <div className={cn(className, styles.userDetails)}>
         <DetailsHeader userData={userData} />
         <div className="container">
           <DetailsList userData={userData} />

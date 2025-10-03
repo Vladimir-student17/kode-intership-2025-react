@@ -10,6 +10,15 @@
     position: absolute;
     top: 22px;
     left: 24px;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
   }
 
   .card {
