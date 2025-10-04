@@ -26,6 +26,11 @@
   padding: 24px 16px;
   border-radius: 20px;
   background-color: $color-white;
+  transition: background-color 0.2s ease-in;
+
+  &__dark {
+    background-color: $color-placeholder;
+  }
 
   @include vp-767 {
     width: 100%;

@@ -2,12 +2,15 @@ import cn from "classnames";
 import { useEffect, type FC } from "react";
 import styles from "./styles.module.scss";
 import { useGetUsersQuery } from "@/store/getUsers";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 interface Props {
   className?: string;
 }
 
 const Header: FC<Props> = ({ className }) => {
+  const isDark = useSelector((state: RootState) => state.isDark);
   const { isError, isLoading, refetch } = useGetUsersQuery("all", {
     pollingInterval: 100000,
     refetchOnReconnect: true,
@@ -30,6 +33,7 @@ const Header: FC<Props> = ({ className }) => {
       className={cn(className, {
         [styles.header__error]: isError,
         [styles.header__loading]: isLoading,
+        [styles.header__dark]: isDark,
       })}
     >
       <div className="container">

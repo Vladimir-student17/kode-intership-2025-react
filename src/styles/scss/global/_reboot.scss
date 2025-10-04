@@ -27,11 +27,6 @@ a {
   text-decoration: none;
 }
 
-.white-block {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
-
+.dark {
   background-color: variables.$color-white;
-  border-radius: 10px;
 }

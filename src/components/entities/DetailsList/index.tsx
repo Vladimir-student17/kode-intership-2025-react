@@ -7,6 +7,8 @@ import ageCalculation from "@/configs/ageCalculation";
 import godOrLet from "@/configs/godOrLet";
 import formatPhone from "@/configs/formatPhone";
 import Icon from "@/components/UI/Icon";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 interface Props {
   className?: string;
@@ -14,8 +16,13 @@ interface Props {
 }
 
 const DetailsList: FC<Props> = ({ className, userData }) => {
+  const isDark = useSelector((state: RootState) => state.isDark);
   return (
-    <ul className={cn(styles.listInfo, className)}>
+    <ul
+      className={cn(styles.listInfo, className, {
+        [styles.listInfo__dark]: isDark,
+      })}
+    >
       <li className={styles.rowInfo}>
         <Icon iconId="icon-star" />
         <span className={styles.text}>

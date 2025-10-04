@@ -9,7 +9,7 @@ const LazyUserDetails = lazy(() => import("./components/pages/UserDetails"));
 const App = () => {
   return (
     <>
-      <Layout>
+      <Layout >
         <main className="main">
           <Routes>
             <Route path="/" element={<LazyHome />} />

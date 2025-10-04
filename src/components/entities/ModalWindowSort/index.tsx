@@ -13,13 +13,18 @@ interface Props {
 }
 
 const ModalWindowSort: FC<Props> = ({ className }) => {
+  const isDark = useSelector((state: RootState) => state.isDark);
   const dispatch = useDispatch();
   const valueSort = useSelector((state: RootState) => state.sortType);
   const closeModalTimeMS: number = 400;
 
   return (
     <div className={cn(className, styles.modalWrapper)}>
-      <div className={styles.modalWindow}>
+      <div
+        className={cn(styles.modalWindow, {
+          [styles.modalWindow__dark]: isDark,
+        })}
+      >
         <div className={styles.modalWindow__top}>
           <span className={styles.modalWindow__title}>Сортировка</span>
           <Button

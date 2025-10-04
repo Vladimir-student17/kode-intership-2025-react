@@ -4,6 +4,7 @@
   list-style: none;
   margin: 0;
   padding: 8px 0 0;
+  transition: color 0.2 ease-in;
 
   .rowInfo {
     height: 60px;
@@ -33,5 +34,16 @@
     font-size: 16px;
     line-height: 20px;
     color: $color-gray-text;
+  }
+
+  &__dark {
+    & .text {
+      color: $color-silcer-bag;
+    }
+    & .rowInfo {
+      & > svg {
+        color: $color-silcer-bag;
+      }
+    }
   }
 }

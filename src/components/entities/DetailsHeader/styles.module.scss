@@ -5,6 +5,7 @@
   align-items: center;
   padding: 72px 0 24px;
   background-color: $color-silcer-bag;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 
   .btnBack {
     position: absolute;
@@ -52,5 +53,24 @@
     line-height: 16px;
     text-align: center;
     color: $color-dark-gray;
+  }
+
+  &__dark {
+    background-color: $color-bg-modal;
+
+    & .btnBack {
+      color: $color-silcer-bag;
+    }
+
+    & .fullName {
+      color: $color-placeholder;
+
+      & > span {
+        color: $color-placeholder;
+      }
+    }
+    & .departament {
+      color: $color-placeholder;
+    }
   }
 }

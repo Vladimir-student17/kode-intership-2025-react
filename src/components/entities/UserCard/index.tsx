@@ -5,6 +5,8 @@ import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import nameMonth from "@/configs/nameMonth";
 import ImageElement from "@/components/UI/ImageElement";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 interface Props {
   className?: string;
@@ -13,11 +15,18 @@ interface Props {
 }
 
 const UserCard: FC<Props> = ({ className, data, needBirthday = false }) => {
+  const isDark = useSelector((state: RootState) => state.isDark);
   const dayBirthday = new Date(data.birthday).getDate();
-  const monthBirthday = nameMonth[Number(new Date(data.birthday).getMonth())].slice(0,3);
+  const monthBirthday = nameMonth[
+    Number(new Date(data.birthday).getMonth())
+  ].slice(0, 3);
   return (
     <Link to={`/details/:${data.id}`}>
-      <div className={cn(className, styles.userCard)}>
+      <div
+        className={cn(className, styles.userCard, {
+          [styles.userCard__dark]: isDark,
+        })}
+      >
         <ImageElement url={data.avatarUrl} className={styles.userCard__img} />
         <div className={styles.userCard__info}>
           <p className={styles.userCard__fullName}>

@@ -3,6 +3,8 @@ import { type FC } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
 import type { Departament } from "@/types/Departament";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 interface Props {
   className?: string;
@@ -18,6 +20,7 @@ const RadioGroup: FC<Props> = ({
   defaultValue = "all",
   onChange,
 }) => {
+  const isDark = useSelector((state: RootState) => state.isDark);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value as DepartamentData;
     if (newValue) {
@@ -29,7 +32,7 @@ const RadioGroup: FC<Props> = ({
 
   return (
     <div
-      className={cn(className, styles.radioGroup)}
+      className={cn(className, styles.radioGroup, {[styles.radioGroup__dark]: isDark})}
       aria-labelledby={`${name}-legend`}
     >
       {options.map(({ value, label }) => (

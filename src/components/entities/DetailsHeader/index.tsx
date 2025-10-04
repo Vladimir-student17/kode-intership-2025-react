@@ -8,6 +8,8 @@ import firstUpperCase from "@/configs/firstUpperCase";
 import Button from "@/components/UI/Button";
 import Icon from "@/components/UI/Icon";
 import ImageElement from "@/components/UI/ImageElement";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 interface Props {
   className?: string;
@@ -15,9 +17,10 @@ interface Props {
 }
 
 const DetailsHeader: FC<Props> = ({ className, userData }) => {
+   const isDark = useSelector((state: RootState) => state.isDark);
   const navigate = useNavigate();
   return (
-    <div className={cn(styles.header, className)}>
+    <div className={cn(styles.header, className, {[styles.header__dark]: isDark})}>
       <Button
         className={styles.btnBack}
         onClick={() => navigate(-1)}

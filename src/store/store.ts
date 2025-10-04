@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit/react";
 import sortReducer from "./slices/sortSlice";
 import modalReducer from "./slices/modalWindowSlice";
 import togglePathPage from "./slices/togglePageSlice";
+import toggleTheme from "./slices/toggleTheme";
 import { userApi } from "./getUsers";
 import { testApi } from "./testApi";
 import { getCode500 } from "./getCode500";
@@ -11,7 +12,7 @@ const store = configureStore({
     sortType: sortReducer,
     showModal: modalReducer,
     page: togglePathPage,
-
+    isDark: toggleTheme,
     [userApi.reducerPath]: userApi.reducer,
     [testApi.reducerPath]: testApi.reducer,
     [getCode500.reducerPath]: getCode500.reducer,

@@ -37,4 +37,17 @@
       border-bottom: 2px solid $color-violet;
     }
   }
+
+  &__dark {
+    .radioGroup__label {
+      &:hover {
+        color: $color-white;
+      }
+
+      &_isAcive {
+        color: $color-white;
+        border-bottom: 2px solid $color-placeholder;
+      }
+    }
+  }
 }

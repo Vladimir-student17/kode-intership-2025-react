@@ -61,6 +61,18 @@
     line-height: 20px;
     color: $color-dark-gray;
   }
+
+  &__dark {
+    .userCard__fullName {
+      color: $color-placeholder;
+    }
+    .userCard__departament {
+      color: $color-white;
+    }
+    .userCard__birthday {
+      color: $color-placeholder;
+    }
+  }
 }
 
 @keyframes show {
