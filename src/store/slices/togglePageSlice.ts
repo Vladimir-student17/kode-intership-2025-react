@@ -6,8 +6,9 @@ const currentPageSlice = createSlice({
   name: "page",
   initialState,
   reducers: {
-    togglePage: (state, { payload }: PayloadAction<string>) =>
-      (state = payload),
+    togglePage: (_, { payload }: PayloadAction<string>) => {
+      return payload;
+    },
   },
 });
 
