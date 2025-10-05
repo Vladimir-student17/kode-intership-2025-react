@@ -10,7 +10,6 @@ import Button from "../Button";
 interface Props {
   className?: string;
   onInputChange: React.Dispatch<React.SetStateAction<string>>;
-  onClick?: () => void;
   value: string;
   placeholder?: string;
 }
@@ -23,24 +22,25 @@ const InputField: FC<Props> = ({
 }) => {
   const [lengthValue, setLengthValue] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, serInputValue] = useState<string>(value);
 
   const dispatch = useDispatch<AppDispatch>();
   const sortType = useSelector((state: RootState) => state.sortType);
 
   useEffect(() => {
     setLengthValue(value.length);
-  }, [value]);
 
-  const handleInputChange = (e: string) => {
-    if (e) {
-      onInputChange(e);
+    const inputValueTim = setTimeout(() => handleInputChange(inputValue), 600);
+
+    return () => clearTimeout(inputValueTim);
+  }, [value, inputValue]);
+
+  const handleInputChange = (word: string) => {
+    if (word) {
+      onInputChange(word);
     } else {
       onInputChange("");
     }
-  };
-
-  const handleSortClick = () => {
-    dispatch(openModal());
   };
 
   return (
@@ -65,15 +65,15 @@ const InputField: FC<Props> = ({
         ref={inputRef}
         type="text"
         className={styles.input}
-        onChange={(e) => handleInputChange(e.target.value)}
-        value={value}
+        onChange={(e) => serInputValue(e.target.value)}
+        value={inputValue}
         placeholder={placeholder}
         aria-label="Поле поиска"
       />
 
       <Button
         className={styles.buttonSort}
-        onClick={handleSortClick}
+        onClick={() => dispatch(openModal())}
         icon={
           <Icon
             iconId="icon-sort"

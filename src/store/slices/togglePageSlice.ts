@@ -1,14 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-
 const initialState: string = "/";
 
 const currentPageSlice = createSlice({
   name: "page",
   initialState,
   reducers: {
-    togglePage: (state, action: PayloadAction<string>) =>
-      (state = action.payload),
+    togglePage: (state, { payload }: PayloadAction<string>) =>
+      (state = payload),
   },
 });
 

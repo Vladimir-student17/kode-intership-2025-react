@@ -3,16 +3,14 @@ import styles from "./styles.module.scss";
 import cn from "classnames";
 import img from "../../../../public/images/flying-saucer.png";
 import imgx2 from "../../../../public/images/flying-saucer@x2.png";
-import type { FallbackProps } from "react-error-boundary";
 import Button from "@/components/UI/Button";
 
 interface Props {
   className?: string;
-  fallProps?: FallbackProps;
   refetch?: () => void;
 }
 
-const ErrorMessage: FC<Props> = ({ className, fallProps, refetch }) => {
+const ErrorMessage: FC<Props> = ({ className, refetch }) => {
   return (
     <div className={cn(className, styles.emptyList)}>
       <img
@@ -29,10 +27,7 @@ const ErrorMessage: FC<Props> = ({ className, fallProps, refetch }) => {
       <span className={styles.emptyList__descrip}>
         Постараемся быстро починить
       </span>
-      {refetch && <Button text="Попробовать снова" onClick={() => refetch} />}
-      {fallProps && (
-        <Button text="Попробовать снова" onClick={() => fallProps} />
-      )}
+      {refetch && <Button text="Попробовать снова" onClick={() => refetch()} />}
     </div>
   );
 };

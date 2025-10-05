@@ -13,8 +13,8 @@ const sortTypeSlice = createSlice({
     setBirthdayType: (): SortType => {
       return "birthday";
     },
-    setValueType: (state, actions: PayloadAction<SortType>) => {
-      state = actions.payload;
+    setValueType: (state, { payload }: PayloadAction<SortType>) => {
+      state = payload;
     },
   },
 });

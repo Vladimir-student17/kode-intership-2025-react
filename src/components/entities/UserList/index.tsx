@@ -9,33 +9,28 @@ import UserListElement from "../UserListElement";
 
 interface Props {
   className?: string;
-  data: UsersList | undefined;
+  data: UsersList;
 }
-
 const UserList: FC<Props> = ({ data }) => {
   const isSortBirthday = useSelector((state: RootState) => state.sortType);
-
-  if (data) {
-    if (data.length) {
-      if (isSortBirthday === "birthday") {
-        const objData: SortArrayBirthday = SortBirthday(data);
-        return (
-          <>
-            {objData.thisYear.length !== 0 && (
-              <UserListElement data={objData.thisYear} needBirthday />
-            )}
-            {objData.nextYear.length !== 0 && (
-              <UserListElement data={objData.nextYear} needYear needBirthday />
-            )}
-          </>
-        );
-      }
-      return <UserListElement data={data} />;
-    } else {
-      return <EmptyList />;
+  if (data.length) {
+    if (isSortBirthday === "birthday") {
+      const objData: SortArrayBirthday = SortBirthday(data);
+      return (
+        <>
+          {objData.thisYear.length !== 0 && (
+            <UserListElement data={objData.thisYear} needBirthday />
+          )}
+          {objData.nextYear.length !== 0 && (
+            <UserListElement data={objData.nextYear} needYear needBirthday />
+          )}
+        </>
+      );
     }
+    return <UserListElement data={data} />;
+  } else {
+    return <EmptyList />;
   }
-  return <UserListElement data={Array(5)} />;
 };
 
 export default UserList;

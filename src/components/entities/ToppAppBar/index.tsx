@@ -1,65 +1,30 @@
-import { useEffect, useState, type FC } from "react";
+import { type FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
 import { departmentConfig } from "@/configs/departamentConfig";
 import RadioGroup from "@/components/entities/RadioGroup";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
-import type { UsersList } from "@/types/UserData";
-import { useGetUsersQuery } from "@/store/getUsers";
-import type { DepartamentData } from "@/types/DepartamentData";
-import findUser from "@/configs/findUsers";
-import { useSearchParams } from "react-router-dom";
 import InputField from "../../UI/InputField";
 import ModalWindowSort from "../ModalWindowSort";
+import type { DepartamentData } from "@/types/DepartamentData";
 
 interface Props {
   className?: string;
-  setData: React.Dispatch<React.SetStateAction<UsersList | undefined>>;
+  setValueInput: React.Dispatch<React.SetStateAction<string>>;
+  valueInput: string;
+  setDepartament: React.Dispatch<React.SetStateAction<DepartamentData>>;
+  departament: DepartamentData;
 }
 
-const TopAppBar: FC<Props> = ({ className, setData }) => {
+const TopAppBar: FC<Props> = ({
+  className,
+  setValueInput,
+  valueInput,
+  setDepartament,
+  departament,
+}) => {
   const showModal = useSelector((state: RootState) => state.showModal);
-  const [searchParams, setSearchParam] = useSearchParams();
-  const [valueInput, setValueInput] = useState<string>(
-    searchParams.get("search") || ""
-  );
-  const [departament, setDepartament] = useState<DepartamentData>(
-    searchParams.get("departament") as DepartamentData
-  );
-  const { data, isSuccess } = useGetUsersQuery(departament || "all", {
-    pollingInterval: 1000 * 60 * 5,
-    refetchOnReconnect: true,
-  });
-
-  useEffect(() => {
-    if (isSuccess) {
-      const newArr = [...findUser(data, valueInput)];
-      setTimeout(() => setData(newArr), 400);
-    }
-  }, [data, setData, valueInput, isSuccess]);
-
-  useEffect(() => {
-    const newSearchParamsDep = new URLSearchParams(searchParams);
-
-    if (departament && departament !== "all") {
-      newSearchParamsDep.set("departament", departament);
-    } else {
-      newSearchParamsDep.delete("departament");
-    }
-    setSearchParam(newSearchParamsDep);
-  }, [departament]);
-
-  useEffect(() => {
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    if (valueInput) {
-      newSearchParams.set("search", valueInput.toLowerCase().trim());
-    } else {
-      newSearchParams.delete("search");
-    }
-    setSearchParam(newSearchParams);
-  }, [valueInput]);
 
   return (
     <div className={cn(className, styles.form)}>
