@@ -5,7 +5,6 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/kode-intership-2025-react.io/",
   css: {
     preprocessorOptions: {
       scss: {
