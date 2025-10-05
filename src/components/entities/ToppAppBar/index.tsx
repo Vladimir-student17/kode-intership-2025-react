@@ -27,17 +27,17 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
   const [departament, setDepartament] = useState<DepartamentData>(
     searchParams.get("departament") as DepartamentData
   );
-  const { data } = useGetUsersQuery(departament || "all", {
+  const { data, isSuccess } = useGetUsersQuery(departament || "all", {
     pollingInterval: 1000 * 60 * 5,
     refetchOnReconnect: true,
   });
 
   useEffect(() => {
-    if (data) {
+    if (isSuccess) {
       const newArr = [...findUser(data, valueInput)];
       setTimeout(() => setData(newArr), 400);
     }
-  }, [data, setData, valueInput, departament]);
+  }, [data, setData, valueInput, isSuccess]);
 
   useEffect(() => {
     const newSearchParamsDep = new URLSearchParams(searchParams);
@@ -48,7 +48,7 @@ const TopAppBar: FC<Props> = ({ className, setData }) => {
       newSearchParamsDep.delete("departament");
     }
     setSearchParam(newSearchParamsDep);
-  }, [valueInput, departament]);
+  }, [departament]);
 
   useEffect(() => {
     const newSearchParams = new URLSearchParams(searchParams);

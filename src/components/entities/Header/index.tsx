@@ -11,7 +11,7 @@ interface Props {
 
 const Header: FC<Props> = ({ className }) => {
   const isDark = useSelector((state: RootState) => state.isDark);
-  const { isError, isLoading, refetch } = useGetUsersQuery("all", {
+  const { isError, isLoading, isFetching, refetch } = useGetUsersQuery("all", {
     pollingInterval: 100000,
     refetchOnReconnect: true,
     refetchOnFocus: true,
@@ -32,7 +32,7 @@ const Header: FC<Props> = ({ className }) => {
     <div
       className={cn(className, {
         [styles.header__error]: isError,
-        [styles.header__loading]: isLoading,
+        [styles.header__loading]: isLoading || isFetching,
         [styles.header__dark]: isDark,
       })}
     >
@@ -45,7 +45,7 @@ const Header: FC<Props> = ({ className }) => {
           >
             Поиск
           </span>
-          {isLoading && (
+          {(isLoading || isFetching) && (
             <span className={styles.header__message}>
               Секундочку, гружусь...
             </span>
