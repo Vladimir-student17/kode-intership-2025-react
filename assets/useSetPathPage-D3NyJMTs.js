@@ -1,1 +1,0 @@
-import{a as r,r as s,t as o}from"./index-wuPI54yW.js";function i(t){const e=new Date(t),a=e.getFullYear(),n=new Date(`${a}-01-01`);return+e-+n}const u=()=>{const t=r();s.useEffect(()=>{t(o(window.location.pathname))},[t])};export{i as m,u};
