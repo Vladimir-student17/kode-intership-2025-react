@@ -23,6 +23,8 @@ export default defineConfig({
       '@api': path.resolve(__dirname, './src/store/api'),
       "@styles": path.resolve(__dirname, "./src/styles/scss/global"),
     }
-  }
+  },
+  base: "/kode-intership-2025-react",
+
 })
 

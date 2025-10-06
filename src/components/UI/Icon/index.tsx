@@ -9,6 +9,8 @@ interface Props {
 
 const Icon: FC<Props> = ({ className = "", iconId, color }) => {
   const size: number = iconId === "icon-close" ? 16 : 24;
+
+  const iconPath = `/kode-intership-2025-react/svg/sprite.svg#${iconId}`;
   return (
     <svg
       style={{ color }}
@@ -17,7 +19,7 @@ const Icon: FC<Props> = ({ className = "", iconId, color }) => {
       preserveAspectRatio="xMidYMid meet"
       className={className}
     >
-      <use xlinkHref={`/svg/${iconId}.svg`} />
+      <use xlinkHref={iconPath} />
     </svg>
   );
 };

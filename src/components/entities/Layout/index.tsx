@@ -2,9 +2,8 @@ import type { FC, ReactNode } from "react";
 import cn from "classnames";
 import styles from "./styles.module.scss";
 import Header from "@/components/entities/Header";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
 import ToggleTheme from "../ToggleTheme";
+import { useLocation } from "react-router";
 
 interface Props {
   className?: string;
@@ -12,11 +11,12 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ className, children }) => {
-  const pagePath = useSelector((state: RootState) => state.page);
+  const location = useLocation();
+
   return (
     <div className={cn(className, styles.layout)}>
       <ToggleTheme />
-      {pagePath === "/" && <Header />}
+      {location.pathname === "/" && <Header />}
       {children}
     </div>
   );
