@@ -2,8 +2,7 @@
 Telegram: @Vladimir09_17
 hh.ru: https://kaliningrad.hh.ru/resume/f1682651ff0f2d01b60039ed1f7a5134467376
 tel: +79062335216
-
-github pages: 
+gh_pages: https://vladimir-student17.github.io/kode-intership-2025-react/
 
 
 
@@ -21,6 +20,7 @@ github pages:
 11. Сверстать компоненет отвечающий за индикацию состояния соединения с сетью.
 12. Реализовать возможность смена темы.
 13. Реализовать поиск после полнного ввода текста.
+14. deploy проекта на gh_pages
 
 
 

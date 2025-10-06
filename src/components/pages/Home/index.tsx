@@ -21,7 +21,7 @@ const Home: FC<Props> = ({ className }) => {
     searchParams.get("search") || ""
   );
   const [departament, setDepartament] = useState<DepartamentData>(
-    searchParams.get("departament") as DepartamentData
+    (searchParams.get("departament") as DepartamentData) || "all"
   );
 
   const { data, isSuccess, isError, isLoading, refetch } = useGetUsersQuery(
