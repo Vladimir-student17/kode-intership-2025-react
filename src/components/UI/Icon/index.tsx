@@ -17,7 +17,7 @@ const Icon: FC<Props> = ({ className = "", iconId, color }) => {
       preserveAspectRatio="xMidYMid meet"
       className={className}
     >
-      <use xlinkHref={`/svg/sprite.svg#${iconId}`} />
+      <use xlinkHref={`/svg/${iconId}.svg`} />
     </svg>
   );
 };
