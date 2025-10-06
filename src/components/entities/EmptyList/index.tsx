@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
-import img from "/images/magnifying-glass.png";
-import imgx2 from "/images/magnifying-glass@x2.png";
+import img from "../../../../public/images/magnifying-glass.png";
+import imgx2 from "../../../../public/images/magnifying-glass@x2.png";
 
 interface Props {
   className?: string;
